@@ -1,0 +1,114 @@
+/* Model buy tickets */
+
+.modelbuytic.open{
+    display:flex;
+}
+
+.modelbuytic{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display:none;
+    align-items: center;
+    justify-content: center;
+    z-index: 8;
+}
+
+.modelbuytic .container{
+    position:absolute;
+    z-index:2;
+    background-color: #fff;
+    width: 900px;
+    min-height: 200px;
+    position: relative;
+    max-width: calc(100% - 32px);
+    animation: modelFadeIn ease .5s;
+}
+
+.modelbuytic .btnexit{
+    position: absolute !important;
+    top:0;
+    right:0;
+    padding: 8px 16px;
+    color:#fff;
+    opacity:0.8;
+
+}
+
+.modelbuytic .btnexit:hover{
+    background-color: #ccc;
+    color: #000;
+    cursor: pointer;
+    opacity: 1;
+}
+
+.modelbuytic .header {
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: #fff;
+}
+
+
+.modelbuytic .icon-bag{
+    margin-right: 16px;
+}
+
+.modelbuytic .body{
+    padding: 16px;
+}
+
+.modelbuytic .label{
+    display:block;
+    font-size: 15px;
+    margin-bottom: 16px;;
+}
+
+.modelbuytic .input{
+    border: 1px solid #ccc;
+    width: 100%;
+    font-size: 15px;
+    padding: 10px;
+    margin-bottom: 24px ;
+}
+
+#buytic {
+    background-color: #098688;
+    border: none;
+    width: 100%;
+    color: #fff;
+    font-size: 15px;
+    text-transform: uppercase;
+    padding: 14px;
+}
+
+#buytic:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.modelbuytic .footer{
+    padding: 12px;
+    text-align: right;
+
+}
+
+.modelbuytic .footer a{
+    color: #2196F3;
+}
+
+@keyframes modelFadeIn {
+    from{
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

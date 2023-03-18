@@ -1,0 +1,115 @@
+{% extends 'polls/layout/base.html' %}
+
+{% block content %}
+<!--link css-->
+
+<div class="Classes">
+    <!-- Primary Class Start -->
+    <div class="container-fluid pt-5">
+        <div class="container">
+            <div class="text-center pb-2">
+                <p class="section-title px-5"><span class="px-2">Primary Class</span></p>
+            </div>
+
+            <div class="row pb-3">
+                 {% for q in queryset %}
+                <div class=" col-lg-4 mb-4">
+                    <div class=" card border-0 shadow-sm mb-2">
+                        <img class="card-img-top mb-2" src="/static/img/blog-1.jpg" alt="">
+                        <div id="" class=" card-body bg-light text-center p-4">
+                            <h4 class="" class="">{{q.name}}</h4>
+                            <div class="d-flex justify-content-center mb-3">
+                                <small class=" mr-3"><i class="fa fa-user text-primary"></i>
+                                    <span class="teacher">{{q.teacher.name}}</span>
+                                </small>
+                                <small class=" mr-3"><i class="fa fa-folder text-primary"></i>
+                                    <span class="price">{{q.price}}</span>
+                                </small>
+                                <small class="mr-3"><i class="fa fa-comments text-primary"></i> 15</small>
+                            </div>
+                            <button class="js-btnbuy btn btn-primary px-4 mx-auto my-2">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<!--Primary Class End-->
+
+   <!-- Intermediate Class Start -->
+
+<!--Intermediate Class End-->
+
+   <!-- High Class Start -->
+
+
+<!--High Class End-->
+</div>
+
+<!--Button-->
+
+<!-- Model buy tickets -->
+    <div class="modelbuytic js-model" id="myModal">
+        <div class="container js-container" style="padding: 0;">
+            <div class="btnexit js-exit">
+                <i class="fas fa-window-close"></i>
+            </div>
+            <header class="header bg-secondary">
+                <i class="fas fa-graduation-cap"></i>
+                Book Course
+            </header>
+            <div class="body">
+                <label for="tic-quantity" class="label">
+                    <i class="fas fa-user"></i>
+                    Full name
+                </label>
+                <input id="tic-quantity" type="text" class="input" placeholder="Enter Name?">
+                <label for="tic-email" class="label">
+                    <i class="fas fa-envelope-square"></i>
+                    Send To
+                </label>
+                <input id="tic-email" type="email" class="input" placeholder="Enter mail">
+                <button id="buytic" class="btn-primary">Pay
+                    <i class="fas fa-sync-alt fa-spin"></i>
+                </button>
+            </div>
+            <div class="footer">
+                <p class="help">Need <a href="#">help?</a></p>
+            </div>
+
+
+        </div>
+
+
+    </div>
+    <!-- Javascript buyBtn -->
+
+<!-- Javascript buyBtn -->
+    <script>
+        const buyBtns=document.querySelectorAll('.js-btnbuy')
+        const model=document.querySelector('.js-model')
+        const container=document.querySelector('.js-container')
+        const exit=document.querySelector('.js-exit')
+        function showBuyTickets(){
+            model.classList.add('open')
+        }
+        function hideBuyTickets(){
+            model.classList.remove('open')
+        }
+        for(const buyBtn of buyBtns){
+            buyBtn.addEventListener('click',showBuyTickets)
+        }
+        exit.addEventListener('click',hideBuyTickets)
+        model.addEventListener('click',hideBuyTickets)
+        container.addEventListener('click',function(event){
+            event.stopPropagation()
+        })
+    </script>
+
+{% endblock %}
