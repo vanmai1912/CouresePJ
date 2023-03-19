@@ -2,7 +2,7 @@
 
 {% block content %}
 <!--link css-->
-
+<button class="js-btnbuy btn btn-primary px-4 mx-auto my-2">Book Now</button>
 <div class="Classes">
     <!-- Primary Class Start -->
     <div class="container-fluid pt-5">
@@ -12,12 +12,12 @@
             </div>
 
             <div class="row pb-3">
-                 {% for q in queryset %}
+                {% for q in queryset %}
                 <div class=" col-lg-4 mb-4">
                     <div class=" card border-0 shadow-sm mb-2">
                         <img class="card-img-top mb-2" src="/static/img/blog-1.jpg" alt="">
                         <div id="" class=" card-body bg-light text-center p-4">
-                            <h4 class="" class="">{{q.name}}</h4>
+                            <h4 class="">{{q.name}}</h4>
                             <div class="d-flex justify-content-center mb-3">
                                 <small class=" mr-3"><i class="fa fa-user text-primary"></i>
                                     <span class="teacher">{{q.teacher.name}}</span>
@@ -32,8 +32,6 @@
                     </div>
                 </div>
                 {% endfor %}
-
-
             </div>
         </div>
     </div>
@@ -62,36 +60,34 @@
             </div>
             <header class="header bg-secondary">
                 <i class="fas fa-graduation-cap"></i>
-                Book Course
+                Information Detail
             </header>
             <div class="body">
                 <label for="tic-quantity" class="label">
                     <i class="fas fa-user"></i>
                     Full name
                 </label>
-                <input id="tic-quantity" type="text" class="input" placeholder="Enter Name?">
+                <input class="input" id="tic-quantity" placeholder="Enter Name?" required type="text">
                 <label for="tic-email" class="label">
                     <i class="fas fa-envelope-square"></i>
                     Send To
                 </label>
-                <input id="tic-email" type="email" class="input" placeholder="Enter mail">
-                <button id="buytic" class="btn-primary">Pay
-                    <i class="fas fa-sync-alt fa-spin"></i>
-                </button>
+                <input class="input" id="tic-email" placeholder="Enter mail" required type="email">
+                <!--                <button id="buytic" class="btn-primary">Pay-->
+                <!--                    <i class="fas fa-sync-alt fa-spin"></i>-->
+                <!--                </button>-->
+                <div id="paypal-button-container" style="text-align:center;"></div>
             </div>
             <div class="footer">
                 <p class="help">Need <a href="#">help?</a></p>
             </div>
-
-
         </div>
-
-
     </div>
-    <!-- Javascript buyBtn -->
-
 <!-- Javascript buyBtn -->
-    <script>
+{% block scripts %}
+<!-- Javascript buyBtn -->
+<script src="https://www.paypal.com/sdk/js?client-id=ASfE-3UJyWVAmYd2PrhRUi_U679cUGOlwBDIusu_Wj8GPSCx6ij3_iUA2MFy7c_QY52b_pdhPD9TV7Jn&currency=USD"></script>
+<script>
         const buyBtns=document.querySelectorAll('.js-btnbuy')
         const model=document.querySelector('.js-model')
         const container=document.querySelector('.js-container')
@@ -110,6 +106,41 @@
         container.addEventListener('click',function(event){
             event.stopPropagation()
         })
-    </script>
+
+</script>
+<script>
+        var amount = "{{ grand_total }}";
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons({
+
+            // Set up the transaction
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '100',
+                        }
+                    }]
+                });
+            },
+
+            // Finalize the transaction
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    // Show a success message to the buyer
+                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                });
+            },
+
+            style: {
+                color:  'blue',
+                shape:  'pill',
+                label:  'pay',
+                height: 40
+            }
+        }).render('#paypal-button-container');
+
+</script>
+{% endblock scripts %}
 
 {% endblock %}
