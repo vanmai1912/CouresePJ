@@ -60,6 +60,11 @@ class Bill(models.Model):
         return self.first_name + self.last_name
 
 
+class Payment(models.Model):
+    payment_id = models.CharField(max_length=100)
+    payer_id = models.CharField(max_length=100)
+    payment_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    payment_time = models.DateTimeField(auto_now_add=True)
 
 
 # Create your models here.
