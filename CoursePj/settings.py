@@ -39,7 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Courses.apps.CoursesConfig',
     'rest_framework',
+    'captcha',
 ]
+
+
+RECAPTCHA_PUBLIC_KEY = '6Lea3xclAAAAAMHXe3-9LEOJSefCJFJQdU6hr9zU'
+RECAPTCHA_PRIVATE_KEY = '6Lea3xclAAAAAN-lLqmUaN0oDdkSEqyZrmsvqOzt'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -125,3 +131,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+

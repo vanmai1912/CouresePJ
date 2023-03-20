@@ -17,12 +17,15 @@
             {% endfor %}
             <h2 class='form__title'>Sign In</h2>
             <p>
-                <label style="color: while">Username: </label>
+                <label >Username: </label>
                 {{form.username}}
             </p>
              <p>
                 <label>Password: </label>
                 {{form.password}}
+            </p>
+            <p>
+                {{form.captcha}}
             </p>
             <input type="hidden" name="next" value="/">
             <input type="submit"  value="Sign In" >

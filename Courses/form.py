@@ -1,7 +1,10 @@
 from django import forms
 from django.contrib.auth.models import User
+import recaptcha
+
 from django.core.exceptions import ObjectDoesNotExist
 import re
+
 
 
 class RegistraionForm(forms.Form):
@@ -11,6 +14,7 @@ class RegistraionForm(forms.Form):
     email = forms.EmailField(label='Email')
     password1 = forms.CharField(label='Mật khẩu', widget=forms.PasswordInput())
     password2 = forms.CharField(label='Nhập lại mật khẩu', widget=forms.PasswordInput())
+    captcha = recaptcha
 
     def clean_password2(self):
         if 'password1' in self.cleaned_data:

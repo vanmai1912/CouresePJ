@@ -1,7 +1,8 @@
 from django.contrib.auth import authenticate
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .static import *
 from .form import RegistraionForm
+
 
 from django.shortcuts import render
 
@@ -10,11 +11,12 @@ from rest_framework import viewsets, generics, permissions
 from .models import Course, Teacher,  Category
 from .serializers import CourseSerializer,  TeacherSerializer, CategorySerializer
 
-
 def login(request):
     return render(request, 'registration/login.html')
 
-
+# def logout(request):
+#     logout(request)
+#     return redirect('login')
 def classes(request):
     queryset = queryset = Course.objects.all()
     return render(request, 'polls/classes.html', {'queryset': queryset})
@@ -22,6 +24,7 @@ def classes(request):
 
 def register(request):
     form = RegistraionForm()
+
     if request.method == 'POST':
         form = RegistraionForm(request.POST)
         if form.is_valid():
@@ -36,6 +39,11 @@ def register(request):
 def index(request):
 
     return render(request, 'polls/index.html')
+
+
+
+
+
 
 
 # class CourseViewSet(viewsets.ModelViewSet):
