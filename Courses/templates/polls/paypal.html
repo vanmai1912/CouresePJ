@@ -1,0 +1,69 @@
+{% extends 'polls/layout/base.html' %}
+
+{% block title %} Thanh toán {% endblock %}
+
+{% block content %}
+<div class="booking">
+
+    <section class="checkout-head-mobile">
+        <form method="post" action="">
+            {% csrf_token %}
+            <div class="container">
+
+
+                        <h2 class="d-none d-lg-block">
+                            Thông tin khách hàng
+                        </h2>
+                        <div class="description hardCode">
+
+                            <div class="">
+                                <div class="booking" action="#">
+                                    <div class="col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="name">First name</label>
+                                            <input type="text" class="form-control" placeholder="First name..." id="name"
+                                                   name="name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="name">Last name</label>
+                                            <input type="text" class="form-control" placeholder="Lats name..." id="lastname"
+                                                   name="lastname">
+                                        </div>
+                                         <div class="form-group">
+                                            <label for="phone">Số điện thoại</label>
+                                            <input type="text" class="form-control" placeholder="Nhập số điện thoại..."
+                                                   id="phone" name="phone">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="email" class="form-control" placeholder="Nhập email..." id="email"
+                                                   name="email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="course">Price</label>
+                                            <input type="" class="form-control" value="{{c.name}}" readonly="false" id="course"
+                                                   name="course">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="price">Price</label>
+                                            <input type="" class="form-control" value="{{c.price}}"  readonly="false" id="price"
+                                                   name="price">
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="index-btn-sign">
+                            <button type="submit" class="btn btn-primary">Đặt ngay</button>
+                        </div>
+
+
+            </div>
+        </form>
+    </section>
+
+</div>
+{% endblock %}

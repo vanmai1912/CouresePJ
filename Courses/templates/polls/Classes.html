@@ -2,7 +2,10 @@
 
 {% block content %}
 <!--link css-->
+<!--<<<<<<< HEAD-->
 
+<!--=======-->
+<!--&gt;>>>>>> 17a3b2bc490a3e7ebfaf7f03a1fa553721124e6a-->
 <div class="Classes">
     <!-- Primary Class Start -->
     <div class="container-fluid pt-5">
@@ -16,21 +19,67 @@
                 <div class=" col-lg-4 mb-4">
                     <div class=" card border-0 shadow-sm mb-2">
                         <img class="card-img-top mb-2" src="/static/img/blog-1.jpg" alt="">
-                        <div id="" class=" card-body bg-light text-center p-4">
-                            <h4 class="">{{q.name}}</h4>
+                        <div id="inf-form" class=" card-body bg-light text-center p-4">
+                            <h4 id="name" class="">{{q.name}}</h4>
                             <div class="d-flex justify-content-center mb-3">
                                 <small class=" mr-3"><i class="fa fa-user text-primary"></i>
-                                    <span class="teacher">{{q.teacher.name}}</span>
+                                    <span id="teacher" class="teacher">{{q.teacher.name}}</span>
                                 </small>
                                 <small class=" mr-3"><i class="fa fa-folder text-primary"></i>
-                                    <span class="price">{{q.price}}</span>
+                                    <span id="price" class="price">{{q.price}}</span>
                                 </small>
                                 <small class="mr-3"><i class="fa fa-comments text-primary"></i> 15</small>
                             </div>
-                            <button class="js-btnbuy btn btn-primary px-4 mx-auto my-2">Book Now</button>
+                            <a href=" {{q.id}} " type='submit' class="js-btnbuy btn btn-primary px-4 mx-auto my-2">Book
+                                Now</a>
                         </div>
                     </div>
                 </div>
+                <!-- END CLASS -->
+                <!-- Model buy course -->
+                <!--                <div class="modelbuytic js-model" id="myModal">-->
+                <!--                    <div class="container js-container" style="padding: 0;">-->
+                <!--                        <div class="btnexit js-exit">-->
+                <!--                            <i class="fas fa-window-close"></i>-->
+                <!--                        </div>-->
+                <!--                        <header class="header bg-secondary">-->
+                <!--                            <i class="fas fa-graduation-cap"></i>-->
+                <!--                            Information Detail-->
+                <!--                        </header>-->
+                <!--                        <div class="body">-->
+                <!--                            <div class="cou-details" style="display:flex">-->
+                <!--                                {% if error_message %}-->
+                <!--                                    <div class="alert alert-danger">{{ error_message }}</div>-->
+                <!--                                {% endif %}-->
+                <!--                                <form style="flex-basis:70%;" action=""method="POST">-->
+                <!--                                    <label for="tic-quantity" class="label">-->
+                <!--                                        <i class="fas fa-user"></i>-->
+                <!--                                    Full name-->
+                <!--                                    </label>-->
+                <!--                                    <input class="input" id="tic-quantity" placeholder="Enter Name?" required type="text">-->
+                <!--                                    <label for="tic-email" class="label">-->
+                <!--                                        <i class="fas fa-envelope-square"></i>-->
+                <!--                                    Send To-->
+                <!--                                    </label>-->
+                <!--                                    <input class="input" id="tic-email" placeholder="Enter mail" required type="email">-->
+                <!--                                    &lt;!&ndash;                <button id="buytic" class="btn-primary">Pay&ndash;&gt;-->
+                <!--                                    &lt;!&ndash;                    <i class="fas fa-sync-alt fa-spin"></i>&ndash;&gt;-->
+                <!--                                    &lt;!&ndash;                </button>&ndash;&gt;-->
+                <!--                                </form>-->
+                <!--&lt;!&ndash;                                <div class="f_info_course" id="inf-cou"style="flex-basis:30%;text-align:center;margin-top:5%">&ndash;&gt;-->
+                <!--&lt;!&ndash;                                        <h5>Course Detail</h5>&ndash;&gt;-->
+                <!--&lt;!&ndash;                                        <p>Course's Name:{{q.name}}</p>&ndash;&gt;-->
+                <!--&lt;!&ndash;                                        <p>Total:{{q.price}}</p>&ndash;&gt;-->
+                <!--&lt;!&ndash;                                        <p>By teach:{{q.teacher.name}}</p>&ndash;&gt;-->
+                <!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+                <!--                            </div>-->
+                <!--                            <div id="paypal-button-container" style="text-align:center;"></div>-->
+                <!--                        </div>-->
+                <!--                        <div class="footer">-->
+                <!--                            <p class="help">Need <a href="#">help?</a></p>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
                 {% endfor %}
             </div>
         </div>
@@ -38,52 +87,10 @@
     <div class="clear"></div>
 </div>
 
-<!--Primary Class End-->
 
-   <!-- Intermediate Class Start -->
-
-<!--Intermediate Class End-->
-
-   <!-- High Class Start -->
-
-
-<!--High Class End-->
 </div>
 
-<!--Button-->
 
-<!-- Model buy tickets -->
-    <div class="modelbuytic js-model" id="myModal">
-        <div class="container js-container" style="padding: 0;">
-            <div class="btnexit js-exit">
-                <i class="fas fa-window-close"></i>
-            </div>
-            <header class="header bg-secondary">
-                <i class="fas fa-graduation-cap"></i>
-                Information Detail
-            </header>
-            <div class="body">
-                <label for="tic-quantity" class="label">
-                    <i class="fas fa-user"></i>
-                    Full name
-                </label>
-                <input class="input" id="tic-quantity" placeholder="Enter Name?" required type="text">
-                <label for="tic-email" class="label">
-                    <i class="fas fa-envelope-square"></i>
-                    Send To
-                </label>
-                <input class="input" id="tic-email" placeholder="Enter mail" required type="email">
-                <!--                <button id="buytic" class="btn-primary">Pay-->
-                <!--                    <i class="fas fa-sync-alt fa-spin"></i>-->
-                <!--                </button>-->
-                <div id="paypal-button-container" style="text-align:center;"></div>
-            </div>
-            <div class="footer">
-                <p class="help">Need <a href="#">help?</a></p>
-            </div>
-        </div>
-    </div>
-<!-- Javascript buyBtn -->
 {% block scripts %}
 <!-- Javascript buyBtn -->
 <script src="https://www.paypal.com/sdk/js?client-id=ASfE-3UJyWVAmYd2PrhRUi_U679cUGOlwBDIusu_Wj8GPSCx6ij3_iUA2MFy7c_QY52b_pdhPD9TV7Jn&currency=USD"></script>
@@ -106,6 +113,7 @@
         container.addEventListener('click',function(event){
             event.stopPropagation()
         })
+
 
 </script>
 <script>
@@ -140,7 +148,9 @@
             }
         }).render('#paypal-button-container');
 
+
 </script>
+
 {% endblock scripts %}
 
 {% endblock %}

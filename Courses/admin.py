@@ -15,7 +15,7 @@ class TeacherAdmin(admin.ModelAdmin):
 
 class BillAdmin(admin.ModelAdmin):
 
-    list_display = ["id", "first_name", "last_name", "phone", "email", "curses"]
+    list_display = ["id", "first_name", "last_name", "phone", "email", "course", "price"]
     search_fields = ['first_name']
 
 
@@ -24,6 +24,10 @@ class CourseAdmin(admin.ModelAdmin):
     list_display = ["id", "name", "price", "description", "category", "teacher", "active"]
     search_fields = ['name', 'description', 'price']
 
+
+class PaymentAdmin(admin.ModelAdmin):
+
+    list_display = ["payment_id","payment_amount","payment_time","payer_id"]
 
 
 
