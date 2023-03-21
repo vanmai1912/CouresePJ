@@ -7,7 +7,18 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <style>
+        label{
+            margin-bottom: 10px;
+        }
+        input{
+            width =100%;
+            placeholder = username;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,26 +32,29 @@
         {% for key, value in form.errors.items %}
             {{value}}
         {% endfor %}
-        <div class="user-box">
-            <input type="text" {{form.username}} >
-            <label>Username</label>
-          </div>
-          <div class="user-box">
-            <input type="password"  {{form.password}}>
-            <label>Password</label>
-          </div>
-            
-           
-          <a href="#">
+        <p class="user-box">
+             <label></label>
+
+             {{form.username}}
+          </p>
+          <p class="user-box">
+            <label></label>
+            {{form.password}}
+          </p>
+        <input type="hidden" name="next" value="/" >
+
+
+          <a href="{% url '' %}">
             <span></span>
             <span></span>
             <span></span>
             <span></span>
 
+
             <input type="submit"  value="Sign In" >
           </a>
-        
-        
+
+
 
 </form>
   </div>

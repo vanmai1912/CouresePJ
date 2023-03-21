@@ -22,7 +22,6 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
     path('register/', views.register, name='register'),
     path('admin/', admin.site.urls, name='admin'),
-
     path('classes/<int:id>/', views.paypal, name='paypal'),
 
 

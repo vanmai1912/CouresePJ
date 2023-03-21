@@ -85,11 +85,9 @@ WSGI_APPLICATION = 'CoursePj.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ecoursesdb',
+        'NAME': 'coursesdb',
         'USER': 'root',
-
-
-        'PASSWORD': '191201'
+        'PASSWORD': 'phantan0106'
 
     }
 }
@@ -133,7 +131,8 @@ STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
-
+RECAPTCHA_PUBLIC_KEY = '6LcnBx4lAAAAAOKQhGsBRG-ny3h1iyKW-JMbIgL0'
+RECAPTCHA_PRIVATE_KEY = '6LcnBx4lAAAAAKCBjg7iC1oFu6gK-qhMRj0CoHmP'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 

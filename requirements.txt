@@ -5,7 +5,7 @@ charset-normalizer==3.1.0
 colorama==0.4.6
 cryptography==39.0.2
 Deprecated==1.2.13
-Django==4.1.7
+Django==4.0
 django-oauth-toolkit==2.2.0
 django-paypal==2.0
 django-ranged-response==0.2.0

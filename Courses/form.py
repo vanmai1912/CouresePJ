@@ -2,13 +2,12 @@ from django import forms
 import hashlib
 from django.contrib.auth.models import User
 from .models import Bill
-
-# from captcha.fields import CaptchaField
-# from captcha.widgets import ReCaptchaV2Checkbox
-
-
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV2Checkbox
 from django.core.exceptions import ObjectDoesNotExist
 import re
+
+
 
 
 
@@ -22,6 +21,7 @@ class RegistraionForm(forms.Form):
     email = forms.EmailField(label='Email')
     password1 = forms.CharField(label='Mật khẩu', widget=forms.PasswordInput())
     password2 = forms.CharField(label='Nhập lại mật khẩu', widget=forms.PasswordInput())
+    captcha = ReCaptchaField()
 
 
 

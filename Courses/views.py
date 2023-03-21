@@ -2,18 +2,19 @@ from django.contrib.auth import authenticate
 from django.shortcuts import render, redirect
 # from paypal.pro.forms import PaymentForm
 # from paypalrestsdk import Payment
-
-
+from  Courses.encoding import *
+from  Courses.decoding import *
 from .static import *
+from  captcha import *
 from .form import RegistraionForm
-
-
 from django.shortcuts import render
-
 from django.http import HttpResponse, HttpResponseRedirect
 from rest_framework import viewsets, generics, permissions
 from .models import Course, Bill, Teacher, Category, Payment as PaymentModel
 from .serializers import CourseSerializer,  TeacherSerializer, CategorySerializer
+
+
+
 
 def login(request):
     return render(request, '.polls/layout/login.html')
@@ -28,7 +29,6 @@ def classes(request):
 
 def register(request):
     form = RegistraionForm()
-
     if request.method == 'POST':
         form = RegistraionForm(request.POST)
         if form.is_valid():
@@ -73,12 +73,14 @@ def paypal(request, id):
     #     error_message = None
 
     if request.method == 'POST':
-        firstname = request.POST['name']
-        lastname = request.POST['lastname']
-        phone = request.POST['phone']
-        mail = request.POST['email']
+        firstname = encoding_no2(request.POST['name'])
+        lastname = encoding_no2(request.POST['lastname'])
+        phone = encoding_no2(request.POST['phone'])
+        mail = encoding_no2(request.POST['email'])
         price = request.POST['price']
         course = request.POST['course']
+
+
 
 
         bill = Bill(first_name=firstname, last_name=lastname, phone=phone, course=course,email=mail, price=price)
@@ -123,9 +125,6 @@ def paypal(request, id):
 # class registerViewSet(viewsets.ModelViewSet):
 #     queryset = register.objects.all()
 #     serializer_class = registerSerializer
-
-
-
 
 
 

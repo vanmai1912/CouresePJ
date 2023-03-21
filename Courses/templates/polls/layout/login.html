@@ -25,6 +25,7 @@
             {% for key, value in form.errors.items %}
                 {{value}}
             {% endfor %}
+
             <h2 class='form__title'>Sign In</h2>
             <p>
                 <label>Username: </label>
@@ -34,6 +35,7 @@
                 <label>Password: </label>
                 {{form.password}}
             </p>
+
             <input type="hidden" name="next" value="/">
             <input type="submit"  value="Sign In" >
           <a href="#" class='link'>Forgot your password?</a>

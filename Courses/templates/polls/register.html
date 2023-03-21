@@ -8,6 +8,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <title>Document</title>
+    <style>
+        p{
+            color: white
+
+        }
+        input{
+            width: 100%
+        }
+    </style>
 </head>
 <body>
     <div class="login-box">
@@ -16,30 +25,7 @@
         
         {% csrf_token %}
 
-        <div class="user-box">
-            <input type="text" {{form.username}} >
-            <label>Username</label>
-        </div>
-        <div class="user-box">
-            <input type="text" {{form.first_name}} >
-            <label>First name</label>
-        </div>
-        <div class="user-box">
-            <input type="text" {{form.email}} >
-            <label>Last name</label>
-        </div>
-        <div class="user-box">
-            <input type="text" {{form.last_name}} >
-            <label>Email</label>
-        </div>
-        <div class="user-box">
-            <input type="password"  {{form.password1}}>
-            <label>Password</label>
-        </div>
-        <div class="user-box">
-            <input type="password"  {{form.password2}}>
-            <label>Confirm password</label>
-        </div>
+        {{form.as_p}}
         <a href="#">
             <span></span>
             <span></span>
