@@ -15,7 +15,6 @@
     <form action="." method="POST">
         
         {% csrf_token %}
-
         <div class="user-box">
             <input type="text" {{form.username}} >
             <label>Username</label>
@@ -40,6 +39,9 @@
             <input type="password"  {{form.password2}}>
             <label>Confirm password</label>
         </div>
+          
+          
+        
         <a href="#">
             <span></span>
             <span></span>
@@ -47,8 +49,6 @@
             <span></span>
             <input type="submit" value="Register">
           </a>
-        
-
         
     </form>
 </div>

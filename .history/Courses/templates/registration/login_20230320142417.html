@@ -1,18 +1,16 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     {% load static %}
+    <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <title>Document</title>
 </head>
 
 <body>
-
-
 <div class="login-box">
     <h2>Login</h2>
     <form action="" method="POST">
@@ -21,28 +19,28 @@
         {% for key, value in form.errors.items %}
             {{value}}
         {% endfor %}
+
         <div class="user-box">
-            <input type="text" {{form.username}} >
-            <label>Username</label>
+            <input {{ form.username }} >
+            <label >Username: </label>
+            
+            
           </div>
           <div class="user-box">
-            <input type="password"  {{form.password}}>
-            <label>Password</label>
+            <input {{ form.password }}>
+              <label >Password: </label>
+             
           </div>
-            
-           
           <a href="#">
             <span></span>
             <span></span>
             <span></span>
             <span></span>
-
-            <input type="submit"  value="Sign In" >
+            Submit
           </a>
-        
-        
 
 </form>
-  </div>
+</div>
+
 </body>
 </html>

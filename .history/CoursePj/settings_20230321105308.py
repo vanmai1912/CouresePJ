@@ -39,14 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Courses.apps.CoursesConfig',
     'rest_framework',
-    'captcha',
 ]
-
-
-RECAPTCHA_PUBLIC_KEY = '6Ldu0BolAAAAAJ2xMnhcRgPnpHYStpQU86jDCu75'
-RECAPTCHA_PRIVATE_KEY = '6Ldu0BolAAAAAA1B9dqF5z5BDef65nmJta_rk44c'
-# SILENCED_SYSTEM_CHECKS = 'captcha.recaptcha_test_key_error'
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -85,12 +78,9 @@ WSGI_APPLICATION = 'CoursePj.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ecoursesdb',
+        'NAME': 'coursesdb',
         'USER': 'root',
-
-
-        'PASSWORD': '191201'
-
+        'PASSWORD': 'P@ssw0rd'
     }
 }
 
