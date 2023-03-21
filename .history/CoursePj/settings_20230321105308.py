@@ -78,9 +78,9 @@ WSGI_APPLICATION = 'CoursePj.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ecoursesdb',
+        'NAME': 'coursesdb',
         'USER': 'root',
-        'PASSWORD': 'Admin@123'
+        'PASSWORD': 'P@ssw0rd'
     }
 }
 

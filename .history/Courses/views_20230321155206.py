@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate
 from django.shortcuts import render, redirect
-# from paypal.pro.forms import PaymentForm
-# from paypalrestsdk import Payment
+from paypal.pro.forms import PaymentForm
+from paypalrestsdk import Payment
 
 from .static import *
 from .form import RegistraionForm
@@ -15,7 +15,7 @@ from .serializers import CourseSerializer,  TeacherSerializer, CategorySerialize
 
 
 def login(request):
-    return render(request, '.polls/layout/login.html')
+    return render(request, 'layout/login.html')
 
 # def logout(request):
 #     logout(request)
@@ -45,28 +45,28 @@ def index(request):
 
 
 
-# def payment(request):
-#     if request.method == 'POST':
-#         payment_id = request.POST.get('payment_id')
-#         payment = Payment.find(payment_id)
-#         if payment.state == 'approved':
-#             if payment.payer.payer_info.email.endswith('sb-ofp47n25314048@personal.example.com'):
-#                 payment_info = payment.to_dict()
-#                 payment_model = PaymentModel(
-#                     payment_id=payment_info['id'],
-#                     payer_id=payment_info['payer']['payer_info']['payer_id'],
-#                     payment_amount=payment_info['transactions'][0]['amount']['total']
-#                 )
-#                 payment_model.save()
-#                 return HttpResponse('Thanh toán thành công')
-#             else:
-#                 error_message = 'Thanh toán không thành công'
-#         else:
-#             error_message = 'Thanh toán không thành công'
-#     else:
-#         form = PaymentForm()
-#         error_message = None
-#     return render(request, 'Classes.html', {'form': form, 'error_message': error_message})
+def payment(request):
+    if request.method == 'POST':
+        payment_id = request.POST.get('payment_id')
+        payment = Payment.find(payment_id)
+        if payment.state == 'approved':
+            if payment.payer.payer_info.email.endswith('sb-ofp47n25314048@personal.example.com'):
+                payment_info = payment.to_dict()
+                payment_model = PaymentModel(
+                    payment_id=payment_info['id'],
+                    payer_id=payment_info['payer']['payer_info']['payer_id'],
+                    payment_amount=payment_info['transactions'][0]['amount']['total']
+                )
+                payment_model.save()
+                return HttpResponse('Thanh toán thành công')
+            else:
+                error_message = 'Thanh toán không thành công'
+        else:
+            error_message = 'Thanh toán không thành công'
+    else:
+        form = PaymentForm()
+        error_message = None
+    return render(request, 'Classes.html', {'form': form, 'error_message': error_message})
 
 
 

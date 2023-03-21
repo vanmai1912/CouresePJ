@@ -25,14 +25,14 @@ def classes(request):
     return render(request, 'polls/classes.html', {'queryset': queryset})
 
 
-def register(request):
-    form = RegistraionForm()
-    if request.method == 'POST':
-        form = RegistraionForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/')
-    return render(request, 'polls/register.html', {'form': form})
+# def register(request):
+#     form = RegistraionForm()
+#     if request.method == 'POST':
+#         form = RegistraionForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return HttpResponseRedirect('/')
+#     return render(request, 'polls/register.html', {'form': form})
 
 
 
