@@ -172,3 +172,10 @@ body{
     z-index:5;
   }
 }
+
+
+.booking{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}

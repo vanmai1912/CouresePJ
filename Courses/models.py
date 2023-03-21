@@ -54,7 +54,8 @@ class Bill(models.Model):
     last_name = models.CharField(null=False, max_length=100)
     phone = models.CharField(null=False, max_length=10)
     email = models.EmailField(null=False)
-    curses = models.ForeignKey(Course, on_delete=models.SET_NULL, null=True)
+    price = models.CharField(null=True, max_length=100)
+    course = models.CharField(null=True, max_length=100)
 
     def __str__(self):
         return self.first_name + self.last_name
