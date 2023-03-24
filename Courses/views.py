@@ -1,5 +1,12 @@
+import pdb
+
+import paypalrestsdk
 from django.contrib.auth import authenticate
 from django.shortcuts import render, redirect
+from paypal.pro.forms import PaymentForm
+from paypalrestsdk import Payment
+from requests import session
+
 # from paypal.pro.forms import PaymentForm
 # from paypalrestsdk import Payment
 from  Courses.encoding import *
@@ -50,28 +57,6 @@ def index(request):
 
 def paypal(request, id):
     c = Course.objects.get(id=id)
-
-    # if request.method == 'POST':
-    #     payment_id = request.POST.get('payment_id')
-    #     payment = Payment.find(payment_id)
-    #     if payment.state == 'approved':
-    #         if payment.payer.payer_info.email.endswith('sb-ofp47n25314048@personal.example.com'):
-    #             payment_info = payment.to_dict()
-    #             payment_model = PaymentModel(
-    #                 payment_id=payment_info['id'],
-    #                 payer_id=payment_info['payer']['payer_info']['payer_id'],
-    #                 payment_amount=payment_info['transactions'][0]['amount']['total']
-    #             )
-    #             payment_model.save()
-    #             return HttpResponse('Thanh toán thành công')
-    #         else:
-    #             error_message = 'Thanh toán không thành công'
-    #     else:
-    #         error_message = 'Thanh toán không thành công'
-    # else:
-    #     form = PaymentForm()
-    #     error_message = None
-
     if request.method == 'POST':
         firstname = encoding_no2(request.POST['name'])
         lastname = encoding_no2(request.POST['lastname'])
@@ -79,17 +64,51 @@ def paypal(request, id):
         mail = encoding_no2(request.POST['email'])
         price = request.POST['price']
         course = request.POST['course']
-
-
-
-
         bill = Bill(first_name=firstname, last_name=lastname, phone=phone, course=course,email=mail, price=price)
-
         bill.save()
         return redirect('/')
-
-
     return render(request, 'polls/paypal.html', {'c': c})
+
+# def payment(request):
+#     if request.method == 'POST':
+#         firstname = encoding_no2(request.POST['name'])
+#         lastname = encoding_no2(request.POST['lastname'])
+#         phone = encoding_no2(request.POST['phone'])
+#         mail = encoding_no2(request.POST['email'])
+#         price = request.POST['price']
+#         course = request.POST['course']
+#         bill = Bill(first_name=firstname, last_name=lastname, phone=phone, course=course,email=mail, price=price)
+#         payment = paypalrestsdk.Payment({
+#             "intent": "sale",
+#             "payer": {
+#                 "payment_method": "paypal"
+#             },
+#             "transactions": [{
+#                 "amount": {
+#                     "total": price,
+#                     "currency": "USD"
+#                 },
+#                 "description": "Mua hàng trên Flask Shop"
+#             }],
+#             "redirect_urls": {
+#                 "return_url": url_for('success(bill)', _external=True),
+#                 "cancel_url": url_for('cart', _external=True)
+#             }
+#         })
+#         if payment.create():
+#             return payment
+#         else:
+#             raise ValueError(payment.error)
+#         # # if payment.create():
+#         #     # Lưu Payment ID vào session
+#         #     session['payment_id'] = payment.id
+#         #     # Redirect user đến trang thanh toán của PayPal
+#         #     for link in payment.links:
+#         #         if link.method == 'REDIRECT':
+#         #             redirect_url = str(link.href)
+#         #             return redirect(redirect_url)
+#         # else:
+#         #     return "Lỗi trong quá trình tạo Payment"
 
 
 
