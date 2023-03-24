@@ -55,6 +55,7 @@
                             </div>
                         </div>
                             <div id="paypal-button-container"></div>
+
                         <div class="index-btn-sign">
                             <button type="submit" class="btn btn-primary">Xác Nhận</button>
                         </div>
@@ -67,8 +68,8 @@
 </div>
 <script src="https://www.paypal.com/sdk/js?client-id=AeBefkwCv250k-_6xDSstx5dLPU8NcQouAc3j4Bel1ZhCqhsx9Ftrg9Bn9Y80UHyz5jeFCYm6PqvrUFX&currency=USD"></script>
 
-    <script>
-        var amount = {{ c.price }};
+<script>
+        var amount = "{{ c.price }}";
         // Render the PayPal button into #paypal-button-container
         paypal.Buttons({
 
@@ -89,7 +90,7 @@
                     // Show a success message to the buyer
                     alert('Transaction completed by ' + details.payer.name.given_name + '!');
                 });
-            }
+            },
 
             style: {
                 color:  'blue',
@@ -99,6 +100,7 @@
             }
         }).render('#paypal-button-container');
     </script>
+
 
 
 {% endblock %}
