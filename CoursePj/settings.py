@@ -87,10 +87,20 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'coursesdb',
         'USER': 'root',
-        'PASSWORD': 'phantan0106'
+        'PASSWORD': '191201'
 
     }
 }
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'Phantan01062002@gmail.com' # email của bạn
+EMAIL_HOST_PASSWORD = 'nhuttan1' # mật khẩu của bạn
+
 
 
 # Password validation

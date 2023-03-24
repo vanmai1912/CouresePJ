@@ -2,13 +2,16 @@ from django.contrib.auth import authenticate
 from django.shortcuts import render, redirect
 # from paypal.pro.forms import PaymentForm
 # from paypalrestsdk import Payment
-from  Courses.encoding import *
-from  Courses.decoding import *
+from Courses.encoding import *
+from Courses.decoding import *
 from .static import *
-from  captcha import *
+from captcha import *
+
+from django.core.mail import send_mail
 from .form import RegistraionForm
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
+from django.db.models import Q
 from rest_framework import viewsets, generics, permissions
 from .models import Course, Bill, Teacher, Category, Payment as PaymentModel
 from .serializers import CourseSerializer,  TeacherSerializer, CategorySerializer
@@ -24,14 +27,26 @@ def login(request):
 #     return redirect('login')
 def classes(request):
     queryset = Course.objects.all()
+    if request.method == 'POST':
+        search = request.POST['search']
+        if search != '':
+            queryset = Course.objects.filter(Q(name__icontains=search) | Q(category__name__icontains=search)
+                                             | Q(teacher__name__icontains=search))
     return render(request, 'polls/classes.html', {'queryset': queryset})
 
 
 def register(request):
     form = RegistraionForm()
+
     if request.method == 'POST':
         form = RegistraionForm(request.POST)
+         # địa chỉ email của người dùng đăng ký
         if form.is_valid():
+            # subject = 'Welcome to X6EngLish'
+            # message = 'Thank you for registering on our site!'
+            # from_email = 'Phantan01062002@gmail.com'  # email của bạn
+            # recipient_list = [mail]
+            # send_mail(subject, message, from_email, recipient_list, fail_silently=False)
             form.save()
             return HttpResponseRedirect('/')
     return render(request, 'polls/register.html', {'form': form})
