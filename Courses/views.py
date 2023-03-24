@@ -1,5 +1,12 @@
+import pdb
+
+import paypalrestsdk
 from django.contrib.auth import authenticate
 from django.shortcuts import render, redirect
+from paypal.pro.forms import PaymentForm
+from paypalrestsdk import Payment
+from requests import session
+
 # from paypal.pro.forms import PaymentForm
 # from paypalrestsdk import Payment
 from Courses.encoding import *
@@ -66,6 +73,7 @@ def index(request):
 def paypal(request, id):
     c = Course.objects.get(id=id)
 
+
     # get
     #filter
     #all()
@@ -91,6 +99,7 @@ def paypal(request, id):
     #     form = PaymentForm()
     #     error_message = None
 
+
     if request.method == 'POST':
         firstname = encoding_no2(request.POST['name'])
         lastname = encoding_no2(request.POST['lastname'])
@@ -98,17 +107,51 @@ def paypal(request, id):
         mail = encoding_no2(request.POST['email'])
         price = request.POST['price']
         course = request.POST['course']
-
-
-
-
-        bill = Bill(first_name=firstname, last_name=lastname, phone=phone, course=course,email=mail, price=price)
-
+        bill = Bill(first_name=firstname, last_name=lastname, phone=phone, course=course, email=mail, price=price)
         bill.save()
         return redirect('/')
-
-
     return render(request, 'polls/paypal.html', {'c': c})
+
+# def payment(request):
+#     if request.method == 'POST':
+#         firstname = encoding_no2(request.POST['name'])
+#         lastname = encoding_no2(request.POST['lastname'])
+#         phone = encoding_no2(request.POST['phone'])
+#         mail = encoding_no2(request.POST['email'])
+#         price = request.POST['price']
+#         course = request.POST['course']
+#         bill = Bill(first_name=firstname, last_name=lastname, phone=phone, course=course,email=mail, price=price)
+#         payment = paypalrestsdk.Payment({
+#             "intent": "sale",
+#             "payer": {
+#                 "payment_method": "paypal"
+#             },
+#             "transactions": [{
+#                 "amount": {
+#                     "total": price,
+#                     "currency": "USD"
+#                 },
+#                 "description": "Mua hàng trên Flask Shop"
+#             }],
+#             "redirect_urls": {
+#                 "return_url": url_for('success(bill)', _external=True),
+#                 "cancel_url": url_for('cart', _external=True)
+#             }
+#         })
+#         if payment.create():
+#             return payment
+#         else:
+#             raise ValueError(payment.error)
+#         # # if payment.create():
+#         #     # Lưu Payment ID vào session
+#         #     session['payment_id'] = payment.id
+#         #     # Redirect user đến trang thanh toán của PayPal
+#         #     for link in payment.links:
+#         #         if link.method == 'REDIRECT':
+#         #             redirect_url = str(link.href)
+#         #             return redirect(redirect_url)
+#         # else:
+#         #     return "Lỗi trong quá trình tạo Payment"
 
 
 

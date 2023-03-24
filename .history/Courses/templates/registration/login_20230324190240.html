@@ -30,7 +30,7 @@
 
         {% csrf_token %}
         {% for key, value in form.errors.items %}
-            {{value}}
+          <p class="error">  {{value}}</p>
         {% endfor %}
         <p class="user-box">
           {{form.username}}
