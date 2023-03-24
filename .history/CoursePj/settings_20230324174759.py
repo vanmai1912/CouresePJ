@@ -12,8 +12,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
-import paypalrestsdk
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -49,7 +47,6 @@ RECAPTCHA_PUBLIC_KEY = '6Ldu0BolAAAAAJ2xMnhcRgPnpHYStpQU86jDCu75'
 RECAPTCHA_PRIVATE_KEY = '6Ldu0BolAAAAAA1B9dqF5z5BDef65nmJta_rk44c'
 # SILENCED_SYSTEM_CHECKS = 'captcha.recaptcha_test_key_error'
 
-SECURE_REFERRER_POLICY = 'same-origin'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -90,9 +87,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'coursesdb',
         'USER': 'root',
-
         'PASSWORD': 'Admin@123'
-
 
     }
 }
@@ -141,9 +136,4 @@ RECAPTCHA_PRIVATE_KEY = '6LcnBx4lAAAAAKCBjg7iC1oFu6gK-qhMRj0CoHmP'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-paypalrestsdk.configure({
-  "mode": "sandbox", # sandbox hoặc live
-  "client_id": "AeBefkwCv250k-_6xDSstx5dLPU8NcQouAc3j4Bel1ZhCqhsx9Ftrg9Bn9Y80UHyz5jeFCYm6PqvrUFX",
-  "client_secret": "EPER87aLzApN3ZxtCjI93P59nLsrbrRiO8YW-IXaaYFDAF6S-O4iNJOtu15HZw0decUGEkve_8wiLC_D"
-})
 
