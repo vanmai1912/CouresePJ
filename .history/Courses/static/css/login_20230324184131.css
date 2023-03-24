@@ -172,6 +172,6 @@ html {
     font-size: 24px;
     font-weight: 500;
   }
-.login-box li {
-  color: red;
+.login-box .errorlist li{
+  color: #fff;
 }
