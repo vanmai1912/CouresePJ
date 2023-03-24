@@ -26,12 +26,12 @@ def login(request):
 #     logout(request)
 #     return redirect('login')
 def classes(request):
-    queryset = Course.objects.all()
+    queryset = Course.objects.filter(active=True)
     if request.method == 'POST':
         search = request.POST['search']
         if search != '':
-            queryset = Course.objects.filter(Q(name__icontains=search) | Q(category__name__icontains=search)
-                                             | Q(teacher__name__icontains=search))
+            queryset = Course.objects.filter((Q(name__icontains=search) | Q(category__name__icontains=search)
+                                             | Q(teacher__name__icontains=search)) & Q(active=True))
     return render(request, 'polls/classes.html', {'queryset': queryset})
 
 
@@ -65,6 +65,10 @@ def index(request):
 
 def paypal(request, id):
     c = Course.objects.get(id=id)
+
+    # get
+    #filter
+    #all()
 
     # if request.method == 'POST':
     #     payment_id = request.POST.get('payment_id')
